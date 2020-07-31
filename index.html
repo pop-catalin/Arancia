@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arancia Time Tracking</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+		<script src="timerscript.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1 id="maintitle">Arancia</h1>
+		</header>
+		<div class="flexContainer">
+			<p id="timer"></p>
+			<button onclick="workTimer()" type="button">Start</button>
+			<button onclick="stopTimer()" type="button">Stop</button>
+		</div>
+		<button class="settingsButton" onclick="openSettings()">Settings</button>
+		<div class="settingsTab">
+			<button>idk</button>
+			<p>text</p>
+			<button onclick="closeSettings()" id="closeButton">X</button>
+		</div>
+	</body>
+</html>
