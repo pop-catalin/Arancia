@@ -1,14 +1,16 @@
-var workkTimer = 1;
-var pauseeTimer = 2;
+var workTimeLength = 1;
+var pauseTimeLength = 1;
 var interval;
-var workFlag; //if workFlag is true, pause will start after timer is done
+var workFlag; //if workFlag is true, pause timer will start after work timer is done
 
 window.onload = function() {
-	let timerLength = workkTimer + ":00";
+	let timerLength = workTimeLength < 10 ? "0" + workTimeLength + ":00" : workTimeLength;
 	document.getElementById("timer").innerHTML = timerLength;
 }
 
 function startTimer(defaultTimer) {
+	document.getElementById("startButton").disabled = true;
+
 	let startTime = new Date().getTime();
 
 	interval = setInterval(function() {
@@ -27,9 +29,10 @@ function startTimer(defaultTimer) {
 
 		if(minutesString === "00" && secondsString === "00") {
 			clearInterval(interval);
-			document.getElementById("timer").innerHTML = "00:00";
 			if(workFlag)
 				pauseTimer();
+			else
+				document.getElementById("startButton").disabled = false;
 		}
 	}, 1000);
 }
@@ -37,18 +40,20 @@ function startTimer(defaultTimer) {
 function stopTimer() {
 	clearInterval(interval);
 	document.getElementById("timer").innerHTML = "00:00";
+	document.getElementById("startButton").disabled = false;
+
 }
 
 function workTimer() {
 	workFlag = true;
-	startTimer(workkTimer);
-	//pauseTimer();
+	document.body.style.backgroundColor = "coral";
+	startTimer(workTimeLength);
 }
 
 function pauseTimer() {
 	workFlag = false;
 	document.body.style.backgroundColor = "#89CFF0";
-	startTimer(pauseeTimer);
+	startTimer(pauseTimeLength);
 }
 
 function openSettings() {
@@ -58,4 +63,24 @@ function openSettings() {
 
 function closeSettings() {
 	document.querySelector(".settingsTab").style.visibility ="hidden";
+}
+
+function updateTime(id) {
+	let inputTime = document.getElementById(id).value;
+	inputTime = validateInputTime(inputTime, id);
+
+
+	if(id === "workTimeInput") {
+		workTimeLength = inputTime;
+		document.getElementById("timer").innerHTML = workTimeLength < 10 ? "0" + workTimeLength + ":00" : workTimeLength + ":00";
+	}
+	else {
+		pauseTimeLength = inputTime;
+	}
+}
+
+function validateInputTime(input, id) {
+	if(input === "") //if html input doesn't send anything because of wrong value ex: --5 send default value
+		return id === "workTimeInput" ? workTimeLength : pauseTimeLength; 
+	return input.replace(/[^0-9]/g,'');
 }

@@ -3,7 +3,8 @@
 	<head>
 		<title>Arancia Time Tracking</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="timerscript.js"></script>
 	</head>
 	<body>
@@ -12,14 +13,18 @@
 		</header>
 		<div class="flexContainer">
 			<p id="timer"></p>
-			<button onclick="workTimer()" type="button">Start</button>
+			<button onclick="workTimer()" id="startButton" type="button">Start</button>
 			<button onclick="stopTimer()" type="button">Stop</button>
 		</div>
 		<button class="settingsButton" onclick="openSettings()">Settings</button>
 		<div class="settingsTab">
-			<button>idk</button>
-			<p>text</p>
-			<button onclick="closeSettings()" id="closeButton">X</button>
+			<button onclick="closeSettings()" id="closeButton"><i class="fa fa-times" style="font-size: 1.7em"></i></button>
+			<p id="timeSettingsText">Time Settings</p>
+			<label for="workTimeInput">Work Time</label>
+			<input id="workTimeInput" type="number" min="1" oninput="updateTime('workTimeInput')">
+			<br><br>
+			<label for="pauseTimeInput">Pause Time</label>
+			<input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
 		</div>
 	</body>
 </html>
