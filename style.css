@@ -3,8 +3,36 @@ body {
 	font-family: 'Courier Prime', monospace;
 }
 
+header {
+	position: relative;
+	width: 30%;
+	min-width: 30em;
+	margin: auto;
+	display: flex;
+	align-items: center;
+}
+
+#logo {
+	position: relative;
+	left: 9em;
+}
+
 #maintitle {
-	align: center;
+	position:absolute;
+	left: 0;
+	color: white;
+	margin-right: 0.2em;
+	bottom: -10%;
+}
+
+.settingsButton {
+	position: absolute;
+	right: 0;
+	color: white;
+	border: none;
+	border-radius: 1em;
+	background-color: rgba(255, 191, 168, 0.4);
+	padding: 1em 1em;
 }
 
 .flexContainer {
@@ -14,24 +42,30 @@ body {
 	flex-wrap: wrap;
 	background-color: rgba(255, 191, 168, 0.4);
 	width: 30%;
+	min-width: 30em;
 	height: 20em;
 	margin: auto;
 	border-radius: 1em;
 }
 
 #timer {
-	font-size: 5em;
+	font-size: 7em;
 	width: 100%;
 	text-align: center;
+	position: relative;
+	bottom: 15%;
+	color: white;
 }
 
 .flexContainer button {
 	background-color:#89CFF0;
-	/*border: 0.1em solid green;*/
+	color: white;
 	border: none;
 	padding: 1em 3em;
 	margin:-2em 1em 2em;
 	border-radius: 1em;
+	position: relative;
+	bottom: 25%;
 }
 
 button {
@@ -47,6 +81,7 @@ button:active {
 	opacity: 0;
 	background-color: rgb(220,220,220);
 	width: 20%;
+	min-width: 20em;
 	height: 25em;
 	margin: auto;
 	position: relative;

@@ -1,10 +1,10 @@
-var workTimeLength = 1;
-var pauseTimeLength = 1;
+var workTimeLength = 45;
+var pauseTimeLength = 15;
 var interval;
 var workFlag; //if workFlag is true, pause timer will start after work timer is done
 
 window.onload = function() {
-	let timerLength = workTimeLength < 10 ? "0" + workTimeLength + ":00" : workTimeLength;
+	let timerLength = workTimeLength < 10 ? "0" + workTimeLength + ":00" : workTimeLength + ":00";
 	document.getElementById("timer").innerHTML = timerLength;
 }
 
@@ -82,5 +82,5 @@ function updateTime(id) {
 function validateInputTime(input, id) {
 	if(input === "") //if html input doesn't send anything because of wrong value ex: --5 send default value
 		return id === "workTimeInput" ? workTimeLength : pauseTimeLength; 
-	return input.replace(/[^0-9]/g,'');
+	return input.replace(/[^0-9]/g,''); //strip string o any non-numeric character
 }
