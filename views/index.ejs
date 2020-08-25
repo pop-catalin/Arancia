@@ -1,1 +1,24 @@
-Middle
+<h1>Hiii <%= name %></h1>
+<form action="/logout?_method=DELETE" method="POST">
+    <button type="submit">Log Out</button>
+</form>
+<header>
+    <h1 id="maintitle">Arancia</h1>
+    <img id="logo" src="/images/orange-64.png" alt="orange fruit logo">
+    <button class="settingsButton" onclick="openSettings()">Settings</button>
+</header>
+<br>
+<div class="flexContainer">
+    <p id="timer"></p>
+    <button onclick="workTimer()" id="startButton" type="button">Start</button>
+    <button onclick="stopTimer()" type="button">Stop</button>
+</div>
+<div class="settingsTab">
+    <button onclick="closeSettings()" id="closeButton"><i class="fa fa-times" style="font-size: 1.7em; color: white"></i></button>
+    <p id="timeSettingsText">Time Settings</p>
+    <label for="workTimeInput">Work Time</label>
+    <input id="workTimeInput" type="number" min="1" oninput="updateTime('workTimeInput')">
+    <br><br>
+    <label for="pauseTimeInput">Pause Time</label>
+    <input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
+</div>
