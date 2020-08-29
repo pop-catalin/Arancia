@@ -106,3 +106,56 @@ input {
 	border: none;
 	border-radius: 0.5em;
 }
+
+#loginDiv {
+	display: inline-block;
+	background-color: rgba(255, 191, 168, 0.4);
+	color: white;
+	border-radius: 1em;
+	position: relative;
+	top: 5em;
+	left: 35%;
+	width: 30%;
+	min-width: 25em;
+	height: 20em;
+	padding: 1em;
+}
+
+#loginDiv h1 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+#loginDiv button {
+	display: inline-block;
+	background-color:#89CFF0;
+	color: white;
+	border: none;
+	padding: 1em 2em;
+	/*margin:-2em 1em 2em;*/
+	margin-left: 40%;
+	border-radius: 1em;
+	position: relative;
+	width: 30%;
+	/*bottom: 25%;*/
+}
+
+#loginDiv input {
+	width: 99%;
+	height: 3em;
+	border-radius: 0.5em;
+	border: none;
+}
+
+#loginDiv label {
+	display: block;
+}
+
+#loginDiv div {
+	margin-top: 0.5em;
+}
+
+#loginDiv a {
+	display: inline-block;
+	margin-top: 3em;
+}
