@@ -159,3 +159,56 @@ input {
 	display: inline-block;
 	margin-top: 3em;
 }
+
+#registerDiv {
+	display: inline-block;
+	background-color: rgba(255, 191, 168, 0.4);
+	color: white;
+	border-radius: 1em;
+	position: relative;
+	top: 5em;
+	left: 35%;
+	width: 30%;
+	min-width: 25em;
+	height: 25em;
+	padding: 1em;
+}
+
+#registerDiv h1 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+#registerDiv button {
+	display: inline-block;
+	background-color:#89CFF0;
+	color: white;
+	border: none;
+	padding: 1em 2em;
+	/*margin:-2em 1em 2em;*/
+	margin-left: 57%;
+	border-radius: 1em;
+	position: relative;
+	width: 30%;
+	/*bottom: 25%;*/
+}
+
+#registerDiv input {
+	width: 99%;
+	height: 3em;
+	border-radius: 0.5em;
+	border: none;
+}
+
+#registerDiv label {
+	display: block;
+}
+
+#registerDiv div {
+	margin-top: 0.5em;
+}
+
+#registerDiv a {
+	display: inline-block;
+	margin-top: 3em;
+}
