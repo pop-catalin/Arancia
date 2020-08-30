@@ -26,7 +26,6 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
             const user = newUser.save();
             res.redirect('/login');
         } else {
-            console.log(message);
             req.session.message = message;
             res.redirect('/register');
         }

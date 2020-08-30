@@ -25,6 +25,17 @@ header {
 	bottom: -10%;
 }
 
+#logOutButton {
+	position: absolute;
+	right: 7em;
+	bottom: 0.8em;
+	color: white;
+	border: none;
+	border-radius: 1em;
+	background-color: rgba(255, 191, 168, 0.4);
+	padding: 1em 1em;
+}
+
 .settingsButton {
 	position: absolute;
 	right: 0;

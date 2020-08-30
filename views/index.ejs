@@ -1,10 +1,9 @@
-<h1>Hiii <%= name %></h1>
-<form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-</form>
 <header>
     <h1 id="maintitle">Arancia</h1>
     <img id="logo" src="/images/orange-64.png" alt="orange fruit logo">
+    <form action="/logout?_method=DELETE" method="POST">
+        <button id="logOutButton" type="submit">Log Out</button>
+    </form>
     <button class="settingsButton" onclick="openSettings()">Settings</button>
 </header>
 <br>

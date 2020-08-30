@@ -28,6 +28,8 @@ function startTimer(defaultTimer) {
 		document.getElementById("timer").innerHTML = minutesString + ":" + secondsString;
 
 		if(minutesString === "00" && secondsString === "00") {
+			var audio = new Audio("./sounds/piece-of-cake.mp3"); 
+            audio.play(); 
 			clearInterval(interval);
 			if(workFlag)
 				pauseTimer();
