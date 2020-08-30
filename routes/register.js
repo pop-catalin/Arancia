@@ -8,32 +8,46 @@ const bcrypt = require('bcrypt');
 // });
 
 router.get('/', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs');
+    const message = req.session.message;
+    res.render('register.ejs', {message: message});
 });
 
 router.post('/', checkNotAuthenticated, async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        // users.push({
-        //     id: Date.now().toString(),
-        //     name: req.body.name,
-        //     email: req.body.email,
-        //     password: hashedPassword
-        // })
-        const newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            password: hashedPassword
-        });
-        console.log('newUser: ');
-        console.log(newUser);
-        const user = newUser.save();
-        console.log(user);
-        res.redirect('/login');
+        const message = await checkNewAccount(req.body.email, req.body.password);
+
+        if(message === "") {
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: hashedPassword
+            });
+            const user = newUser.save();
+            res.redirect('/login');
+        } else {
+            console.log(message);
+            req.session.message = message;
+            res.redirect('/register');
+        }
     } catch {
         res.redirect('/register');
     }
 });
+
+async function checkNewAccount(email, password) {
+    if (password.length < 6) {
+        return "Password too short";
+    }
+    let message = "";
+    await User.find({email: email})
+        .then(user => {
+            if(user) {
+                message = "An account with this email already exists";
+            }
+        });
+    return message;
+}
 
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

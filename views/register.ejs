@@ -1,5 +1,8 @@
 <div id="registerDiv">
 <h1>Register</h1>
+<% if (message) { %>
+    <%= message %>
+<% } %>
 <form action="/register" method="POST">
     <div>
         <label for="name">Name</label>

@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', checkAutheneticated, (req, res) => {
-    console.log('chestii');
-    console.log(req.user);
     res.render('index.ejs', {name: req.user.name});
 });
 
