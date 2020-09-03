@@ -21,3 +21,17 @@
     <label for="pauseTimeInput">Pause Time</label>
     <input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
 </div>
+<div class="taskContainer">
+    <form action="/addTask" method="POST">
+        <div>
+            <label for="taskName">Task Name</label>
+            <input type="text" id="taskName" name="taskName" required>
+        </div>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        <% tasks.forEach(function(item,index){ %>
+            <li> <%= item.name %> </li>
+        <% }) %>
+    </ul>
+</div>
