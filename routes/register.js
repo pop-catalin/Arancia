@@ -41,7 +41,7 @@ async function checkNewAccount(email, password) {
     let message = "";
     await User.find({email: email})
         .then(user => {
-            if(user) {
+            if(user.length) {
                 message = "An account with this email already exists";
             }
         });
