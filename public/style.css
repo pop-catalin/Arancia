@@ -55,8 +55,38 @@ header {
 	width: 30%;
 	min-width: 30em;
 	height: 20em;
-	margin: auto;
+	/* margin: auto; */
 	border-radius: 1em;
+}
+
+.taskContainer {
+	/* display: flex;
+	flex-direction: row; */
+	/* float: right; */
+	/* position: relative;
+	bottom: 20em; */
+	background-color: rgba(255, 191, 168, 0.4);
+	width: 30%;
+	min-width: 30em;
+	height: 20em;
+	/* margin: auto; */
+	border-radius: 1em;
+}
+
+.taskContainer input {
+	width: 20em;
+	margin-left: 2em;
+}
+
+/* .taskContainer form {
+	position: absolute;
+	top: 18em;
+} */
+
+.containerDiv {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
 
 #timer {

@@ -7,10 +7,27 @@
     <button class="settingsButton" onclick="openSettings()">Settings</button>
 </header>
 <br>
-<div class="flexContainer">
-    <p id="timer"></p>
-    <button onclick="workTimer()" id="startButton" type="button">Start</button>
-    <button onclick="stopTimer()" type="button">Stop</button>
+<div class="containerDiv">
+    <div class="flexContainer">
+        <p id="timer"></p>
+        <button onclick="workTimer()" id="startButton" type="button">Start</button>
+        <button onclick="stopTimer()" type="button">Stop</button>
+    </div>
+    <div class="taskContainer">
+        <ul>
+            <% tasks.forEach(function(item,index){ %>
+                <li> <%= item.name %> </li>
+                <form action="/deleteTask" method="POST">
+                    <input type="hidden" name="itemId" value=<%= item.id %>>
+                    <button type="submit">Delete</button>
+                </form>
+            <% }) %>
+        </ul>
+        <form action="/addTask" method="POST">
+            <input type="text" id="taskName" name="taskName" placeholder="Task Description" required>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
 </div>
 <div class="settingsTab">
     <button onclick="closeSettings()" id="closeButton"><i class="fa fa-times" style="font-size: 1.7em; color: white"></i></button>
@@ -20,18 +37,4 @@
     <br><br>
     <label for="pauseTimeInput">Pause Time</label>
     <input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
-</div>
-<div class="taskContainer">
-    <form action="/addTask" method="POST">
-        <div>
-            <label for="taskName">Task Name</label>
-            <input type="text" id="taskName" name="taskName" required>
-        </div>
-        <button type="submit">Add Task</button>
-    </form>
-    <ul>
-        <% tasks.forEach(function(item,index){ %>
-            <li> <%= item.name %> </li>
-        <% }) %>
-    </ul>
 </div>
