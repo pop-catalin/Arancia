@@ -19,13 +19,13 @@
                 <li> <%= item.name %> </li>
                 <form action="/deleteTask" method="POST">
                     <input type="hidden" name="itemId" value=<%= item.id %>>
-                    <button type="submit">Delete</button>
+                    <button type="submit"><i class="fa fa-times" style="font-size: 1.25em;"></i></button>
                 </form>
             <% }) %>
         </ul>
         <form action="/addTask" method="POST">
             <input type="text" id="taskName" name="taskName" placeholder="Task Description" required>
-            <button type="submit">Add Task</button>
+            <button id="addTaskButton" type="submit">Add Task</button>
         </form>
     </div>
 </div>
