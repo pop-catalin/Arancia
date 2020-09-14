@@ -46,6 +46,14 @@ header {
 	padding: 1em 1em;
 }
 
+#youtubeFrame {
+	width: 30%;
+	height: 20em;
+	margin: 0.5em;
+	min-width: 30em;
+	border-radius: 1em;
+}
+
 .flexContainer {
 	display: flex;
 	align-items: center;
@@ -57,7 +65,7 @@ header {
 	height: 20em;
 	/* margin: auto; */
 	border-radius: 1em;
-	margin: 1em;
+	margin: 0.5em;
 }
 
 .taskContainer {
@@ -67,7 +75,7 @@ header {
 	/*
 	bottom: 20em; */
 	position: relative;
-	margin: 1em;
+	margin: 0.5em;
 	background-color: rgba(255, 191, 168, 0.4);
 	width: 30%;
 	min-width: 30em;
