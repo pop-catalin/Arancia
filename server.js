@@ -13,6 +13,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const User = require('./models/user.js');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //connect database
 mongoose.connect(process.env.DATABASE_URL, {
@@ -42,6 +43,8 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.json());
 
 //method override for DELETE to log out
 app.use(methodOverride('_method'));

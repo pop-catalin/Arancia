@@ -8,16 +8,29 @@ router.get('/', checkAutheneticated, (req, res) => {
     res.render('index.ejs', {tasks: req.user.tasks});
 });
 
+// router.post('/addTask', checkAutheneticated, (req, res) => {
+//     //res.render('index.ejs', {tasks: req.user.tasks});
+//     res.send('bla bla');
+// });
+
 router.post('/addTask', (req, res) => {
     User.findOne({email: req.user.email})
         .then(async user => {
             //console.log(user);
-            const task = new Task.model({name: req.body.taskName});
-            user.tasks.addToSet(task);
-            await user.save();
+            //console.log(req.body);
+            //console.log(req);
+            if(req.body.name.length < 32){
+                var task = new Task.model({name: req.body.name});
+                //console.log(task);
+                user.tasks.addToSet(task);
+                await user.save();
+            }
+            //console.log('task is');
+            //console.log(task);
             //res.redirect('./');
             //res.render('index.ejs', {tasks: user.tasks});
-            res.redirect('./');
+            //res.redirect('./');
+            res.send(task);
         }).catch(err => console.log(err));
 })
 
@@ -27,7 +40,7 @@ router.post('/deleteTask', (req, res) => {
     console.log(req.body.itemId);
     User.findOne({email: req.user.email})
         .then(async user => {
-            console.log(user);
+            //console.log(user);
             //await user.remove().exec();
             user.tasks.pull(req.body.itemId);
             await user.save();
