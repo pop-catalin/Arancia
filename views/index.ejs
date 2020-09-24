@@ -17,14 +17,14 @@
     <div class="taskContainer">
         <ul id="taskList">
             <% tasks.forEach(function(item, index){ %>
-                <li id=<%= item.name %>> <%= item.name %> </li>
-                <form id="deleteForm" action="/deleteTask" method="POST">
+                <li id=<%= item.id %>> <%= item.name %> </li>
+                <form class="deleteForm">
                     <input type="hidden" name="itemId" value=<%= item.id %>>
-                    <button type="submit"><i class="fa fa-times" style="font-size: 1.25em;"></i></button>
+                    <button class="deleteButton"><i class="fa fa-times" style="font-size: 1.25em;"></i></button>
                 </form>
             <% }) %>
         </ul>
-        <form method="POST" id="addTask">
+        <form id="addTask">
             <input type="text" id="taskName" name="taskName" placeholder="Task Description" required>
             <button id="addTaskButton">Add Task</button>
         </form>

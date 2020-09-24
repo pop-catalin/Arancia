@@ -34,17 +34,34 @@ router.post('/addTask', (req, res) => {
         }).catch(err => console.log(err));
 })
 
-router.post('/deleteTask', (req, res) => {
+// router.post('/deleteTask', (req, res) => {
+//     //console.log('xd');
+//     //User.findById(req.body.itemId).remove().exec();
+//     //console.log(req.body.itemId);
+//     User.findOne({email: req.user.email})
+//         .then(async user => {
+//             //console.log(user);
+//             //await user.remove().exec();
+//             user.tasks.pull(req.body.itemId);
+//             await user.save();
+//             res.redirect('./');
+//             //res.render('index.ejs', {tasks: user.tasks});
+//         })
+// })
+
+router.post('/deleteTask/:id', (req, res) => {
     //console.log('xd');
     //User.findById(req.body.itemId).remove().exec();
-    console.log(req.body.itemId);
+    //console.log(req.body.itemId);
+    const id = req.params.id;
+
     User.findOne({email: req.user.email})
         .then(async user => {
             //console.log(user);
             //await user.remove().exec();
-            user.tasks.pull(req.body.itemId);
+            user.tasks.pull(id);
             await user.save();
-            res.redirect('./');
+            res.send(id);
             //res.render('index.ejs', {tasks: user.tasks});
         })
 })
