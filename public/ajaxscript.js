@@ -17,7 +17,7 @@ $(function() {
                 // console.log('the task was');
                 // console.log(data._id);
                 $('#taskList').append("<li style=\"margin-right: 0.58em\" id="+ data._id +">" + data.name + "</li>");
-                $('#' + data._id).after("<form action=\"/deleteTask\" method=\"POST\"> <input type=\"hidden\" name=\"itemId\" value=" + data._id + "> <button type=\"submit\"><i class=\"fa fa-times\" style=\"font-size: 1.25em; \"></i> </button> </form>")
+                $('#' + data._id).after("<form class=\"deleteForm\"> <input type=\"hidden\" name=\"itemId\" value=" + data._id + "> <button class=\"deleteButton\"><i class=\"fa fa-times\" style=\"font-size: 1.25em; \"></i> </button> </form>")
                 createInput.val('');
             },
             error: function(e) {
@@ -42,7 +42,8 @@ $(function() {
             contentType: 'application/json',
             success: function(data) {
                 console.log(data);
-                $('#taskList')
+                $('#' + data).remove();
+                $(form).remove();
                 //$('#get-button').click();
             }
         })
