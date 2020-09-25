@@ -1,9 +1,12 @@
 $(function() {
 
     //POST
-    $("form#addTask").on('submit', function(event){
+    $("#addTask").on('submit', function(event){
         event.preventDefault();
         var createInput = $('#taskName');
+
+        
+        //$('#taskList').append("<p>asdf<p>");
 
         $.ajax({
             url: '/addTask',
@@ -12,19 +15,17 @@ $(function() {
             contentType: 'application/json',
             data: JSON.stringify({ name: createInput.val() }),
             success: function(data) {
-                // console.log('asdfsda');
-                // console.log(data);
-                // console.log('the task was');
-                // console.log(data._id);
-                $('#taskList').append("<li style=\"margin-right: 0.58em\" id="+ data._id +">" + data.name + "</li>");
-                $('#' + data._id).after("<form class=\"deleteForm\"> <input type=\"hidden\" name=\"itemId\" value=" + data._id + "> <button class=\"deleteButton\"><i class=\"fa fa-times\" style=\"font-size: 1.25em; \"></i> </button> </form>")
+                addTaskVisualChanges(data);
                 createInput.val('');
             },
             error: function(e) {
-                alert("Error!");
-                console.log("ERROR: ", e);
+                //throw new Error('errorzzz');
+                //alert(e);
+                alert(e.responseText);
+                //console.log("ERROR: ", e);
             }
         });
+          
         });
 
     //DELETE
@@ -41,12 +42,30 @@ $(function() {
             method: 'POST',
             contentType: 'application/json',
             success: function(data) {
-                console.log(data);
-                $('#' + data).remove();
-                $(form).remove();
-                //$('#get-button').click();
+                //console.log(data);
+                deleteTaskVIsualChanges(data, form);
             }
         })
     })
 
 });
+
+function deleteTaskVIsualChanges(data, form) {
+    console.log(data.length);
+    if(data.length > 6) {
+        const divHeight = parseInt($('.taskContainer').css("height").slice(0, -2)) - 35;
+        $('.taskContainer').css("height", divHeight + "px");
+    }
+    $('#' + data.id).remove();
+    $(form).remove();
+}
+
+function addTaskVisualChanges(data) {
+    console.log();
+    if(data.length > 7) {
+        const divHeight = parseInt($('.taskContainer').css("height").slice(0, -2)) + 35;
+        $('.taskContainer').css("height", divHeight + "px");
+    }
+    $('#taskList').append("<li style=\"margin-right: 0.58em\" id="+ data.task._id +">" + data.task.name + "</li>");
+    $('#' + data.task._id).after("<form class=\"deleteForm\"> <input type=\"hidden\" name=\"itemId\" value=" + data.task._id + "> <button class=\"deleteButton\"><i class=\"fa fa-times\" style=\"font-size: 1.25em; \"></i> </button> </form>");                
+}

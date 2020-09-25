@@ -13,26 +13,21 @@ router.get('/', checkAutheneticated, (req, res) => {
 //     res.send('bla bla');
 // });
 
-router.post('/addTask', (req, res) => {
+router.post('/addTask', validateTask, (req, res) => {
     User.findOne({email: req.user.email})
         .then(async user => {
-            //console.log(user);
-            //console.log(req.body);
-            //console.log(req);
-            if(req.body.name.length < 32){
-                var task = new Task.model({name: req.body.name});
-                //console.log(task);
-                user.tasks.addToSet(task);
-                await user.save();
-            }
-            //console.log('task is');
-            //console.log(task);
-            //res.redirect('./');
-            //res.render('index.ejs', {tasks: user.tasks});
-            //res.redirect('./');
-            res.send(task);
+            var task = new Task.model({name: req.body.name});
+            user.tasks.addToSet(task);
+            await user.save();
+
+            //console.log(user.tasks.length);
+            //User.aggregate([{$project: { count: { $size:"$tasks" }}}])
+
+            //db.mycollection.aggregate([{$project: { count: { $size:"$foo" }}}])
+
+            res.send({ task: task, length: user.tasks.length });
         }).catch(err => console.log(err));
-})
+});
 
 // router.post('/deleteTask', (req, res) => {
 //     //console.log('xd');
@@ -61,7 +56,7 @@ router.post('/deleteTask/:id', (req, res) => {
             //await user.remove().exec();
             user.tasks.pull(id);
             await user.save();
-            res.send(id);
+            res.send({ id: id, length: user.tasks.length });
             //res.render('index.ejs', {tasks: user.tasks});
         })
 })
@@ -72,6 +67,17 @@ function checkAutheneticated(req, res, next) {
     }
 
     res.redirect('/login');
+}
+
+function validateTask(req, res, next) {
+    //$('#taskContainer').css("background-color", "green");
+
+    if(req.body.name.length < 32) {
+        return next();
+    }
+    res.status(400);
+    res.send('None shall pass');
+     
 }
 
 module.exports = router;

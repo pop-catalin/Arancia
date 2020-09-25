@@ -106,6 +106,13 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 
+app.use((req, res, next) => {
+    res.status(404).send({
+    status: 404,
+    error: 'Not found'
+    });
+   });
+
 function checkAutheneticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
