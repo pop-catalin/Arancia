@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-// router.get('/', (req, res) => {
-//     res.render('index.ejs', { name: 'req.user.name' });
-// });
-
 router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs');
 });
@@ -16,6 +12,7 @@ router.post('/', checkNotAuthenticated, passport.authenticate('local', {
     failureFlash: true
 }));
 
+//check if the user is not authenticated
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return res.redirect('/');

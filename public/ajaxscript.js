@@ -8,7 +8,6 @@ $(function() {
         $.ajax({
             url: '/addTask',
             method: 'POST',
-            //data: JSON.stringify(data), 
             contentType: 'application/json',
             data: JSON.stringify({ name: createInput.val() }),
             success: function(data) {
@@ -16,10 +15,7 @@ $(function() {
                 createInput.val('');
             },
             error: function(e) {
-                //throw new Error('errorzzz');
-                //alert(e);
                 alert(e.responseText);
-                //console.log("ERROR: ", e);
             }
         });
           
@@ -31,15 +27,11 @@ $(function() {
         var form = $(this).closest('form');
         var taskId = form.find("[name=itemId]").val();
 
-        // var form = this;
-        // console.log(this);
-
         $.ajax({
             url: '/deleteTask/' + taskId,
             method: 'POST',
             contentType: 'application/json',
             success: function(data) {
-                //console.log(data);
                 deleteTaskVisualChanges(data, form);
             }
         })
@@ -47,8 +39,8 @@ $(function() {
 
 });
 
+//remove the deleted task without needing to refresh(only the visual components)
 function deleteTaskVisualChanges(data, form) {
-    //console.log(data.length);
     if(data.length > 6) {
         const divHeight = parseInt($('.taskContainer').css("height").slice(0, -2)) - 35;
         $('.taskContainer').css("height", divHeight + "px");
@@ -57,6 +49,7 @@ function deleteTaskVisualChanges(data, form) {
     $(form).remove();
 }
 
+//show the added task without needing to refresh
 function addTaskVisualChanges(data) {
     console.log();
     if(data.length > 7) {

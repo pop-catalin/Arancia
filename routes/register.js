@@ -3,10 +3,6 @@ const router = express.Router();
 const User = require('../models/user.js');
 const bcrypt = require('bcrypt');
 
-// router.get('/', (req, res) => {
-//     res.render('index.ejs', { name: 'req.user.name' });
-// });
-
 router.get('/', checkNotAuthenticated, (req, res) => {
     const message = req.session.message;
     res.render('register.ejs', {message: message});
@@ -18,6 +14,7 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
         const message = await checkNewAccount(req.body.email, req.body.password);
 
         if(message === "") {
+            //create and save the new user
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
@@ -26,6 +23,7 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
             const user = newUser.save();
             res.redirect('/login');
         } else {
+            //the user is not valid, show the error message
             req.session.message = message;
             res.redirect('/register');
         }
@@ -34,6 +32,7 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
     }
 });
 
+//validate the registration of a new account (email and password)
 async function checkNewAccount(email, password) {
     if (password.length < 6) {
         return "Password too short";
@@ -48,6 +47,7 @@ async function checkNewAccount(email, password) {
     return message;
 }
 
+//check if the user is not logged in
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return res.redirect('/');

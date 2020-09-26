@@ -53,35 +53,23 @@ const indexRouter = require('./routes/index.js');
 const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
 
+//logout route
 app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/login');
 })
 
+//setting the routes
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 
+//handling inexistent paths
 app.use((req, res, next) => {
     res.status(404).send({
     status: 404,
     error: 'Not found'
     });
    });
-
-function checkAutheneticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-
-    res.redirect('/login');
-}
-
-function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return res.redirect('/');
-    }
-    next();
-}
 
 app.listen(3000);

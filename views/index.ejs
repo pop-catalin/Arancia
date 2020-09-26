@@ -14,6 +14,7 @@
         <button onclick="workTimer()" id="startButton" type="button">Start</button>
         <button onclick="stopTimer()" type="button">Stop</button>
     </div>
+    <!-- resize the task div if there are more than 7 tasks on page load -->
     <% if(tasks.length > 7) { %>
         <% var height = 320 + (tasks.length - 7) * 35; %>
         <% var style = "height:" + height + "px !important"; %>
@@ -45,15 +46,3 @@
     <label for="pauseTimeInput">Pause Time</label>
     <input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
 </div>
-
-<!-- <script>
-    $(document).ready(function() {
-    console.log(tasks.length);
-    alert('asdfa');
-    if(tasks.length > 7) {
-        const height = document.getElementsByClassName("taskContainer").height;
-        console.log(height);
-        console.log('asdfa');
-    }
-    });   
-</script> -->
