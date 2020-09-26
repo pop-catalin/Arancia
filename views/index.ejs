@@ -14,7 +14,13 @@
         <button onclick="workTimer()" id="startButton" type="button">Start</button>
         <button onclick="stopTimer()" type="button">Stop</button>
     </div>
-    <div class="taskContainer">
+    <% if(tasks.length > 7) { %>
+        <% var height = 320 + (tasks.length - 7) * 35; %>
+        <% var style = "height:" + height + "px !important"; %>
+        <div class="taskContainer" style="<%= style %>">
+    <% } else {%>
+        <div class="taskContainer">
+    <% }  %>    
         <ul id="taskList">
             <% tasks.forEach(function(item, index){ %>
                 <li id=<%= item.id %>> <%= item.name %> </li>
@@ -39,3 +45,15 @@
     <label for="pauseTimeInput">Pause Time</label>
     <input id="pauseTimeInput" type="number" min="1" oninput="updateTime('pauseTimeInput')">
 </div>
+
+<!-- <script>
+    $(document).ready(function() {
+    console.log(tasks.length);
+    alert('asdfa');
+    if(tasks.length > 7) {
+        const height = document.getElementsByClassName("taskContainer").height;
+        console.log(height);
+        console.log('asdfa');
+    }
+    });   
+</script> -->

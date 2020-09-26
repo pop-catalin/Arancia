@@ -5,9 +5,6 @@ $(function() {
         event.preventDefault();
         var createInput = $('#taskName');
 
-        
-        //$('#taskList').append("<p>asdf<p>");
-
         $.ajax({
             url: '/addTask',
             method: 'POST',
@@ -43,15 +40,15 @@ $(function() {
             contentType: 'application/json',
             success: function(data) {
                 //console.log(data);
-                deleteTaskVIsualChanges(data, form);
+                deleteTaskVisualChanges(data, form);
             }
         })
     })
 
 });
 
-function deleteTaskVIsualChanges(data, form) {
-    console.log(data.length);
+function deleteTaskVisualChanges(data, form) {
+    //console.log(data.length);
     if(data.length > 6) {
         const divHeight = parseInt($('.taskContainer').css("height").slice(0, -2)) - 35;
         $('.taskContainer').css("height", divHeight + "px");

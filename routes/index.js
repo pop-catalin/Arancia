@@ -76,7 +76,7 @@ function validateTask(req, res, next) {
         return next();
     }
     res.status(400);
-    res.send('None shall pass');
+    res.send('Task description too long!');
      
 }
 
