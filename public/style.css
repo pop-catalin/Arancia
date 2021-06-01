@@ -18,7 +18,7 @@ header {
 }
 
 #maintitle {
-	position:absolute;
+	position: absolute;
 	left: 0;
 	color: white;
 	margin-right: 0.2em;
@@ -26,9 +26,10 @@ header {
 }
 
 #logOutButton {
+	font-size: 1.2em;
 	position: absolute;
 	right: 7em;
-	bottom: 0.8em;
+	bottom: 0.1em;
 	color: white;
 	border: none;
 	border-radius: 1em;
@@ -37,6 +38,7 @@ header {
 }
 
 .settingsButton {
+	font-size: 1.2em;
 	position: absolute;
 	right: 0;
 	color: white;
@@ -50,7 +52,7 @@ header {
 	width: 30%;
 	height: 20em;
 	margin: 0.5em;
-	min-width: 30em;
+	min-width: 35em;
 	border-radius: 1em;
 }
 
@@ -61,7 +63,7 @@ header {
 	flex-wrap: wrap;
 	background-color: rgba(255, 191, 168, 0.4);
 	width: 30%;
-	min-width: 30em;
+	min-width: 35em;
 	height: 20em;
 	/* margin: auto; */
 	border-radius: 1em;
@@ -78,30 +80,38 @@ header {
 	margin: 0.5em;
 	background-color: rgba(255, 191, 168, 0.4);
 	width: 30%;
-	min-width: 30em;
+	min-width: 35em;
 	height: 20em;
 	/* margin: auto; */
 	border-radius: 1em;
 }
 
 .taskContainer input {
+	text-indent: 0.5em;
+	font-size: 1.1em;
 	width: 20em;
-	margin-left: 3em;
+	margin-left: 2.3em;
 	position: absolute;
 	bottom: 1em;
 	border-radius: 0.5em;
 	border: none;
-	height: 2em;
+	height: 1.95em;
+}
+
+.taskContainer input:focus {
+	outline: none;
 }
 
 #addTaskButton {
+	font-size: 1.1em;
 	position: absolute;
 	bottom: 1em;
-	left: 24em;
+	left: 23em;
 	height: 2.1em;
+	width: 5em;
 	border: none;
 	border-radius: 0.5em;
-	background-color:#89CFF0;
+	background-color: #89cff0;
 	color: white;
 }
 
@@ -110,7 +120,8 @@ header {
 }
 
 .taskContainer ul li {
-	background-color:#89CFF0;
+	font-size: 1.2em;
+	background-color: #89cff0;
 	color: white;
 	border-radius: 0.5em;
 	padding: 0.25em;
@@ -124,7 +135,7 @@ header {
 }
 
 .taskContainer button {
-	background-color: rgb(220,220,220);
+	background-color: rgb(220, 220, 220);
 	border-radius: 0.25em;
 	border: none;
 }
@@ -150,11 +161,12 @@ header {
 }
 
 .flexContainer button {
-	background-color:#89CFF0;
+	font-size: 1.1em;
+	background-color: #89cff0;
 	color: white;
 	border: none;
 	padding: 1em 3em;
-	margin:-2em 1em 2em;
+	margin: -2em 1em 2em;
 	border-radius: 1em;
 	position: relative;
 	bottom: 25%;
@@ -171,7 +183,7 @@ button:active {
 .settingsTab {
 	visibility: hidden;
 	opacity: 0;
-	background-color: rgb(220,220,220);
+	background-color: rgb(220, 220, 220);
 	width: 20%;
 	min-width: 20em;
 	height: 25em;
@@ -194,7 +206,7 @@ input {
 	position: relative;
 	left: 90%;
 	top: 2%;
-	background-color:#89CFF0;
+	background-color: #89cff0;
 	border: none;
 	border-radius: 0.5em;
 }
@@ -220,7 +232,7 @@ input {
 
 #loginDiv button {
 	display: inline-block;
-	background-color:#89CFF0;
+	background-color: #89cff0;
 	color: white;
 	border: none;
 	padding: 1em 2em;
@@ -273,7 +285,7 @@ input {
 
 #registerDiv button {
 	display: inline-block;
-	background-color:#89CFF0;
+	background-color: #89cff0;
 	color: white;
 	border: none;
 	padding: 1em 2em;
